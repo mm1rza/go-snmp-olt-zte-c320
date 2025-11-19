@@ -9,9 +9,9 @@ services:
       - REDIS_MIN_IDLE_CONNECTIONS=200
       - REDIS_POOL_SIZE=12000
       - REDIS_POOL_TIMEOUT=240
-      - SNMP_HOST=192.168.213.174
+      - SNMP_HOST=192.168.1.1
       - SNMP_PORT=161
-      - SNMP_COMMUNITY=homenetro
+      - SNMP_COMMUNITY=public
     depends_on:
       - redis
     ports:
