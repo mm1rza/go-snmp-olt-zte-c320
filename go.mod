@@ -1,4 +1,4 @@
-module github.com/megadata-dev/go-snmp-olt-zte-c320
+module github.com/Cepat-Kilat-Teknologi/go-snmp-olt-zte-c320
 
 go 1.24.0
 
@@ -7,6 +7,7 @@ toolchain go1.24.1
 require (
 	github.com/go-chi/chi/v5 v5.2.3
 	github.com/go-chi/cors v1.2.2
+	github.com/go-redis/redismock/v9 v9.2.0
 	github.com/gosnmp/gosnmp v1.42.1
 	github.com/redis/go-redis/v9 v9.17.2
 	github.com/rs/xid v1.6.0
@@ -20,7 +21,6 @@ require (
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
 	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc // indirect
 	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
-	github.com/go-redis/redismock/v9 v9.2.0 // indirect
 	github.com/kr/pretty v0.3.1 // indirect
 	github.com/mattn/go-colorable v0.1.14 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
