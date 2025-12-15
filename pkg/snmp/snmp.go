@@ -5,9 +5,9 @@ import (
 	"os"
 	"time"
 
+	"github.com/Cepat-Kilat-Teknologi/go-snmp-olt-zte-c320/config"
+	"github.com/Cepat-Kilat-Teknologi/go-snmp-olt-zte-c320/internal/utils"
 	"github.com/gosnmp/gosnmp"
-	"github.com/megadata-dev/go-snmp-olt-zte-c320/config"
-	"github.com/megadata-dev/go-snmp-olt-zte-c320/internal/utils"
 	"github.com/rs/zerolog/log"
 )
 
@@ -51,8 +51,8 @@ func SetupSnmpConnection(config *config.Config) (*gosnmp.GoSNMP, error) {
 		Port:      snmpPort,                       // Target Port
 		Community: snmpCommunity,                  // Community String
 		Version:   gosnmp.Version2c,               // SNMP Version 2c
-		Timeout:   time.Duration(5) * time.Second, // Timeout: 5s (reduced from 30s for better responsiveness)
-		Retries:   2,                              // Retry count: 2 (reduced from 3, max time = 5s × 2 = 10s)
+		Timeout:   time.Duration(5) * time.Second, // Timeout: 5 s (reduced from the 30s for better responsiveness)
+		Retries:   2,                              // Retry count: 2 (reduced from 3, max time = 5 s × 2 = 10s)
 		MaxOids:   60,                             // Maximum OIDs per request (batch size for better performance)
 		Logger:    gosnmp.Logger{},                // Disable SNMP library logging (empty struct)
 	}

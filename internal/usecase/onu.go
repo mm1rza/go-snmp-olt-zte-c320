@@ -7,12 +7,12 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/Cepat-Kilat-Teknologi/go-snmp-olt-zte-c320/config"
+	apperrors "github.com/Cepat-Kilat-Teknologi/go-snmp-olt-zte-c320/internal/errors"
+	"github.com/Cepat-Kilat-Teknologi/go-snmp-olt-zte-c320/internal/model"
+	"github.com/Cepat-Kilat-Teknologi/go-snmp-olt-zte-c320/internal/repository"
+	"github.com/Cepat-Kilat-Teknologi/go-snmp-olt-zte-c320/internal/utils"
 	"github.com/gosnmp/gosnmp"
-	"github.com/megadata-dev/go-snmp-olt-zte-c320/config"
-	apperrors "github.com/megadata-dev/go-snmp-olt-zte-c320/internal/errors"
-	"github.com/megadata-dev/go-snmp-olt-zte-c320/internal/model"
-	"github.com/megadata-dev/go-snmp-olt-zte-c320/internal/repository"
-	"github.com/megadata-dev/go-snmp-olt-zte-c320/internal/utils"
 	"github.com/rs/zerolog/log"
 	"golang.org/x/sync/singleflight"
 )

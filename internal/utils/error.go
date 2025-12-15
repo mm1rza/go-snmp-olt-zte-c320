@@ -5,8 +5,8 @@ import (
 	"errors"
 	"net/http"
 
-	apperrors "github.com/megadata-dev/go-snmp-olt-zte-c320/internal/errors" // Import custom errors
-	"github.com/rs/zerolog/log"                                              // Import logger
+	apperrors "github.com/Cepat-Kilat-Teknologi/go-snmp-olt-zte-c320/internal/errors" // Import custom errors
+	"github.com/rs/zerolog/log"                                                       // Import logger
 )
 
 // SendJSONResponse is a helper function to send a JSON response

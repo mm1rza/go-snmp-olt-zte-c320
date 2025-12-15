@@ -5,9 +5,9 @@ import (
 	"net/http"
 	"strconv"
 
+	apperrors "github.com/Cepat-Kilat-Teknologi/go-snmp-olt-zte-c320/internal/errors"
+	"github.com/Cepat-Kilat-Teknologi/go-snmp-olt-zte-c320/internal/utils"
 	"github.com/go-chi/chi/v5"
-	apperrors "github.com/megadata-dev/go-snmp-olt-zte-c320/internal/errors"
-	"github.com/megadata-dev/go-snmp-olt-zte-c320/internal/utils"
 )
 
 // ValidateBoardPonParams validates board_id and pon_id URL parameters,

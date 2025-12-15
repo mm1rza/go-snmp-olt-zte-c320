@@ -3,10 +3,10 @@ package handler
 import (
 	"net/http"
 
-	apperrors "github.com/megadata-dev/go-snmp-olt-zte-c320/internal/errors"
-	"github.com/megadata-dev/go-snmp-olt-zte-c320/internal/usecase"
-	"github.com/megadata-dev/go-snmp-olt-zte-c320/internal/utils"
-	"github.com/megadata-dev/go-snmp-olt-zte-c320/pkg/pagination"
+	apperrors "github.com/Cepat-Kilat-Teknologi/go-snmp-olt-zte-c320/internal/errors"
+	"github.com/Cepat-Kilat-Teknologi/go-snmp-olt-zte-c320/internal/usecase"
+	"github.com/Cepat-Kilat-Teknologi/go-snmp-olt-zte-c320/internal/utils"
+	"github.com/Cepat-Kilat-Teknologi/go-snmp-olt-zte-c320/pkg/pagination"
 	"github.com/rs/zerolog/log"
 )
 
