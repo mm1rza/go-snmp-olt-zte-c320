@@ -1,6 +1,6 @@
 # Monitoring OLT ZTE C320 with SNMP
 [![ci](https://github.com/Cepat-Kilat-Teknologi/go-snmp-olt-zte-c320/actions/workflows/ci.yml/badge.svg)](https://github.com/Cepat-Kilat-Teknologi/go-snmp-olt-zte-c320/actions/workflows/ci.yml)
-[![Go Report Card](https://goreportcard.com/badge/github.com/megadata-dev/go-snmp-olt-zte-c320)](https://goreportcard.com/report/github.com/megadata-dev/go-snmp-olt-zte-c320)
+[![Go Report Card](https://goreportcard.com/badge/github.com/Cepat-Kilat-Teknologi/go-snmp-olt-zte-c320)](https://goreportcard.com/report/github.com/Cepat-Kilat-Teknologi/go-snmp-olt-zte-c320)
 [![codecov](https://codecov.io/gh/Cepat-Kilat-Teknologi/go-snmp-olt-zte-c320/graph/badge.svg?token=NB3N7GMUX3)](https://codecov.io/gh/Cepat-Kilat-Teknologi/go-snmp-olt-zte-c320)
 
 Service for integration into the C320 OLT with the Go programming language
@@ -69,25 +69,73 @@ cepatkilatteknologi/snmp-olt-zte-c320:latest
 ```
 
 
-### Available tasks for this project:
+### Available Tasks for this Project:
 
-| Syntax             | Description                                                     |
+Run `task --list` or `task help` to see all available tasks.
+
+#### Development Tasks
+
+| Task               | Description                                                     |
 |--------------------|-----------------------------------------------------------------|
-| init               | Initialize the environment                                      |
-| dev                | Start the local development                                     |
-| app-build          | Build the app binary                                            |
-| build-image        | Build docker image with tag latest                              |
-| push-image         | push docker image with tag latest                               |
-| pull-image         | pull docker image with tag latest                               |
-| docker-run         | Run the docker container image with tag latest                  |
-| docker-stop        | Stop the docker container                                       |
-| docker-remove      | Remove the docker container                                     |
-| up                 | Start the docker containers in the background                   |
-| up-rebuild         | Rebuild the docker containers                                   |
-| down               | Stop and remove the docker containers                           |
-| restart            | Restart the docker containers                                   |
-| rebuild            | Rebuild the docker image and up with detached mode              |
-| tidy               | Clean up dependencies                                           |
+| `task init`        | Initialize the development environment                          |
+| `task dev`         | Start local development (Redis in Docker + App with hot reload)|
+| `task dev-docker`  | Start full development environment in Docker (with hot reload) |
+| `task dev-down`    | Stop local development environment                              |
+| `task dl-deps`     | Install tools required to run/build this app                    |
+
+#### Testing Tasks
+
+| Task                  | Description                                                  |
+|-----------------------|--------------------------------------------------------------|
+| `task test`           | Run all unit tests                                           |
+| `task test-verbose`   | Run all unit tests with verbose output                       |
+| `task test-coverage`  | Run tests and generate coverage report (text)                |
+| `task test-html`      | Generate HTML coverage report and open in browser            |
+| `task test-race`      | Run tests with race detection                                |
+| `task test-short`     | Run short tests (excluding integration tests)                |
+| `task load-test`      | Run k6 load testing                                          |
+| `task benchmark`      | Run benchmarks                                               |
+
+#### Build Tasks
+
+| Task                    | Description                                                |
+|-------------------------|------------------------------------------------------------|
+| `task app-build`        | Build the app binary                                       |
+| `task build-image`      | Build the docker image (local)                             |
+| `task build-image-prod` | Build production docker image (multi-arch)                 |
+| `task push-image`       | Build and push docker image with multi-arch to Docker Hub  |
+| `task pull-image`       | Pull docker image from Docker Hub                          |
+
+#### Docker Development Tasks
+
+| Task             | Description                                                     |
+|------------------|-----------------------------------------------------------------|
+| `task up`        | Start development Docker environment                            |
+| `task down`      | Stop development Docker environment                             |
+| `task restart`   | Restart development Docker environment                          |
+| `task logs`      | View development container logs                                 |
+| `task logs-redis`| View development Redis logs                                     |
+| `task ps`        | Show development containers status                              |
+
+#### Production Deployment Tasks
+
+| Task                 | Description                                                  |
+|----------------------|--------------------------------------------------------------|
+| `task prod-up`       | Start production containers (requires .env.prod)             |
+| `task prod-down`     | Stop production containers                                   |
+| `task prod-restart`  | Restart production containers                                |
+| `task prod-rebuild`  | Rebuild and restart production containers                    |
+| `task prod-logs`     | View production container logs                               |
+| `task prod-logs-redis` | View production Redis logs                                 |
+| `task prod-ps`       | Show production containers status                            |
+
+#### Cleanup Tasks
+
+| Task                | Description                                                   |
+|---------------------|---------------------------------------------------------------|
+| `task tidy`         | Clean up Go dependencies                                      |
+| `task clean`        | Clean up all containers, volumes, and build artifacts         |
+| `task clean-cache`  | Clean Go module cache and build cache                         |
 
 ### Test with curl GET method Board 2 Pon 7
 ``` shell
@@ -103,9 +151,9 @@ curl -sS localhost:8081/api/v1/board/2/pon/7 | jq
       "board": 2,
       "pon": 7,
       "onu_id": 3,
-      "name": "Siti Khotimah",
+      "name": "Customer-001",
       "onu_type": "F670LV7.1",
-      "serial_number": "ZTEGCE3E0FFF",
+      "serial_number": "ZTEGC*******",
       "rx_power": "-22.22",
       "status": "Online"
     },
@@ -113,9 +161,9 @@ curl -sS localhost:8081/api/v1/board/2/pon/7 | jq
       "board": 2,
       "pon": 7,
       "onu_id": 4,
-      "name": "Isroh",
+      "name": "Customer-002",
       "onu_type": "F670LV7.1",
-      "serial_number": "ZTEGCEEA1119",
+      "serial_number": "ZTEGC*******",
       "rx_power": "-21.08",
       "status": "Online"
     },
@@ -123,9 +171,9 @@ curl -sS localhost:8081/api/v1/board/2/pon/7 | jq
       "board": 2,
       "pon": 7,
       "onu_id": 5,
-      "name": "Hadi Susilo",
+      "name": "Customer-003",
       "onu_type": "F670LV7.1",
-      "serial_number": "ZTEGCEC3033C",
+      "serial_number": "ZTEGC*******",
       "rx_power": "-19.956",
       "status": "Online"
     }
@@ -147,14 +195,14 @@ curl -sS localhost:8081/api/v1/board/2/pon/7 | jq
     "board": 2,
     "pon": 7,
     "onu_id": 4,
-    "name": "Isroh",
-    "description": "Bale Agung",
+    "name": "Customer-002",
+    "description": "Location Description",
     "onu_type": "F670LV7.1",
-    "serial_number": "ZTEGCEEA1119",
+    "serial_number": "ZTEGC*******",
     "rx_power": "-20.71",
     "tx_power": "2.57",
     "status": "Online",
-    "ip_address": "10.90.1.214",
+    "ip_address": "10.x.x.x",
     "last_online": "2024-08-11 10:09:37",
     "last_offline": "2024-08-11 10:08:35",
     "uptime": "5 days 13 hours 10 minutes 50 seconds",
@@ -231,9 +279,9 @@ curl -sS 'http://localhost:8081/api/v1/paginate/board/2/pon/8?limit=3&page=2' | 
       "board": 2,
       "pon": 8,
       "onu_id": 4,
-      "name": "Arif Irwan Setiawan",
+      "name": "Customer-004",
       "onu_type": "F670LV7.1",
-      "serial_number": "ZTEGC5A27AE1",
+      "serial_number": "ZTEGC*******",
       "rx_power": "-19.17",
       "status": "Online"
     },
@@ -241,9 +289,9 @@ curl -sS 'http://localhost:8081/api/v1/paginate/board/2/pon/8?limit=3&page=2' | 
       "board": 2,
       "pon": 8,
       "onu_id": 5,
-      "name": "Putra Chandra Agusta",
+      "name": "Customer-005",
       "onu_type": "F660V6.0",
-      "serial_number": "ZTEGD00E4BCC",
+      "serial_number": "ZTEGD*******",
       "rx_power": "-19.54",
       "status": "Online"
     },
@@ -251,9 +299,9 @@ curl -sS 'http://localhost:8081/api/v1/paginate/board/2/pon/8?limit=3&page=2' | 
       "board": 2,
       "pon": 8,
       "onu_id": 6,
-      "name": "Tarjito",
+      "name": "Customer-006",
       "onu_type": "F670LV7.1",
-      "serial_number": "ZTEGC5A062E0",
+      "serial_number": "ZTEGC*******",
       "rx_power": "-21.81",
       "status": "Online"
     }
@@ -282,4 +330,4 @@ var (
 
 
 ### LICENSE
-[MIT License](https://github.com/megadata-dev/go-snmp-olt-zte-c320/blob/main/LICENSE)
+[MIT License](https://github.com/Cepat-Kilat-Teknologi/go-snmp-olt-zte-c320/blob/main/LICENSE)
