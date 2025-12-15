@@ -56,7 +56,6 @@ config/config-prod.yaml
 /dist/
 /build/
 bin/
-tmp/
 
 # User-specific directories
 /sumitroajiprabowo/
